@@ -111,49 +111,218 @@ export default function Home() {
       <div className="max-w-7xl mx-auto">
         {/* Hero Banner Section */}
         <div className="relative rounded-3xl overflow-hidden mb-16 shadow-2xl">
-          <div className="relative h-96 md:h-[500px]">
-            <img
-              src="/mongolia.jpg"
-              alt="Mongolia Banner"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+          <div className="relative h-[800px] md:h-[700px]">
+            {/* Background Image with Parallax Effect */}
+            <div className="absolute inset-0">
+              <img
+                src="/mongolia.jpg"
+                alt="Mongolia Banner"
+                className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[3000ms]"
+              />
+            </div>
 
-            <div className="absolute inset-0 flex items-center">
-              <div className="max-w-2xl px-8 md:px-16">
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-                  Америк чанартай бүтээгдэхүүн
-                </h1>
-                <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-                  Дэлхийн шилдэг брэндүүдийн спортын тэжээллэг
-                  бүтээгдэхүүнүүдийг та бүхэнд хүргэж байна
-                </p>
-                <button
-                  onClick={() => {
-                    document.getElementById("products-section").scrollIntoView({
-                      behavior: "smooth",
-                    });
-                  }}
-                  className="bg-white hover:bg-blue-50 text-blue-600 font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 inline-flex items-center gap-3 group"
-                >
-                  <span>Бүтээгдэхүүнтэй танилцах</span>
-                  <svg
-                    className="w-5 h-5 group-hover:translate-y-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                    />
-                  </svg>
-                </button>
+            {/* Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+            {/* Animated Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,.05)_25%,rgba(255,255,255,.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,.05)_75%,rgba(255,255,255,.05))] bg-[length:60px_60px] animate-[slide_20s_linear_infinite]" />
+            </div>
+
+            {/* Content */}
+            <div className="relative h-full flex items-center">
+              <div className="max-w-7xl mx-auto px-6 md:px-16 w-full">
+                <div className="max-w-3xl">
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-in">
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span>100% Жинхэнэ бүтээгдэхүүн</span>
+                  </div>
+
+                  {/* Main Heading */}
+                  <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight animate-slide-up">
+                    <span className="block mb-2">Америк</span>
+                    <span className="block text-blue-400">чанартай</span>
+                    <span className="block">бүтээгдэхүүн</span>
+                  </h1>
+
+                  {/* Description */}
+                  <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl animate-slide-up animation-delay-200">
+                    Дэлхийн шилдэг брэндүүдийн спортын тэжээллэг
+                    бүтээгдэхүүнүүдийг та бүхэнд хүргэж байна
+                  </p>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 animate-slide-up animation-delay-400">
+                    {/* Primary Button */}
+                    <button
+                      onClick={() => {
+                        document
+                          .getElementById("products-section")
+                          ?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="group relative bg-white hover:bg-blue-50 text-blue-600 font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 inline-flex items-center justify-center gap-3 overflow-hidden"
+                    >
+                      <span className="relative z-10">
+                        Бүтээгдэхүүнтэй танилцах
+                      </span>
+                      <svg
+                        className="w-5 h-5 group-hover:translate-y-1 transition-transform relative z-10"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    </button>
+
+                    {/* Secondary Button */}
+                    <button
+                      onClick={() => {
+                        window.location.href = "/pre-order";
+                      }}
+                      className="group relative bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 inline-flex items-center justify-center gap-3 overflow-hidden"
+                    >
+                      <svg
+                        className="w-5 h-5 group-hover:rotate-12 transition-transform relative z-10"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span className="relative z-10">Урьдчилан захиалах</span>
+                      <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                    </button>
+                  </div>
+
+                  {/* Features */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 animate-slide-up animation-delay-600">
+                    <div className="flex items-center gap-3 text-white/90 bg-white/5 backdrop-blur-sm rounded-lg p-3">
+                      <div className="bg-green-500/20 rounded-lg p-2">
+                        <svg
+                          className="w-5 h-5 text-green-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium">
+                        100% Баталгаатай
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 text-white/90 bg-white/5 backdrop-blur-sm rounded-lg p-3">
+                      <div className="bg-orange-500/20 rounded-lg p-2">
+                        <svg
+                          className="w-5 h-5 text-orange-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium">
+                        Түргэн хүргэлт
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent" />
           </div>
+
+          <style jsx>{`
+            @keyframes slide-up {
+              from {
+                opacity: 0;
+                transform: translateY(30px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes fade-in {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
+
+            @keyframes slide {
+              from {
+                background-position: 0 0;
+              }
+              to {
+                background-position: 60px 60px;
+              }
+            }
+
+            .animate-slide-up {
+              animation: slide-up 0.8s ease-out forwards;
+            }
+
+            .animate-fade-in {
+              animation: fade-in 0.6s ease-out forwards;
+            }
+
+            .animation-delay-200 {
+              animation-delay: 0.2s;
+              opacity: 0;
+            }
+
+            .animation-delay-400 {
+              animation-delay: 0.4s;
+              opacity: 0;
+            }
+
+            .animation-delay-600 {
+              animation-delay: 0.6s;
+              opacity: 0;
+            }
+          `}</style>
         </div>
 
         {/* Products Section */}
