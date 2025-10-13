@@ -71,6 +71,34 @@ export default function Home() {
       photo: ["/bcaa.jpg", "/bcaa2.jpg"],
       instructions: `Дасгалын үеэр эсвэл дараа 1 уулт 300-500мл усанд уусгаж ууна. Өдөрт 1–2 уулт хэрэглэж болно.`,
     },
+    {
+      id: 4,
+      name: "EVLUTION NUTRITION TESTMODE",
+      description: `😤 Эрч хүч чинь буураад, бэлтгэлд хүч дутаж байна уу?
+🔥 Булчингийн өсөлт, сэргэлтээ хурдасгахыг хүсэж байна уу?
+Тэгвэл EVL TESTMODE яг чамд зориулагдсан!
+💊 100 капсул / 50 хоногийн хэрэглээ
+🧠 Олон шатлалт найрлага:
+✅ Fenugreek Seed Extract – байгалийн тестостерон ялгаралтыг дэмжинэ
+✅ L-Arginine – цусны эргэлт, булчингийн сэргэлтийг сайжруулна
+✅ Fadogia Agrestis – эр бэлгийн дааврыг тэнцвэржүүлнэ
+✅ L-Theanine & Boron – эрч хүч, анхаарлыг нэмэгдүүлнэ
+✅ Zinc + Vitamin D3 + B6 + Magnesium – дархлаа, дааврын хэвийн үйл ажиллагааг хадгална
+✅ BioPerine – шингээлтийг сайжруулна
+💪 Үр дүн:
+- Байгалийн тестостерон ялгаралтыг дэмжинэ
+- Булчингийн өсөлт, хүч, гүйцэтгэл сайжирна
+- Эрч хүч, тэсвэр хатуужил нэмэгдэнэ
+- Сэргэлт хурдасна
+- Хүч чадал, сэтгэлийн байдал дээшилнэ`,
+      balance: 0,
+      servings: 50,
+      price: "90000",
+      brand: "EVLUTION NUTRITION",
+      taste: "Амтгүй (капсул)",
+      photo: ["/test.jpg", "/test2.jpg"],
+      instructions: `Хоолны нэмэлт бэлдмэлийн хувьд өдөр бүр унтахаасаа 30-60 минутын өмнө хоосон ходоодоор 2 капсул ууна. 12 долоо хоног хэрэглэсний дараа 4 долоо хоног завсарлага авна. Эмнэлгийн асуудалтай бол эмчээс зөвлөгөө авна уу.`,
+    },
   ];
 
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -80,6 +108,28 @@ export default function Home() {
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("mn-MN").format(price) + "₮";
+  };
+
+  const getStockStatus = (balance) => {
+    if (balance > 0) {
+      return {
+        text: "Бэлэн байгаа",
+        bgColor: "bg-green-500",
+        textColor: "text-green-600",
+      };
+    } else if (balance === 0) {
+      return {
+        text: "Удахгүй ирнэ",
+        bgColor: "bg-orange-500",
+        textColor: "text-orange-600",
+      };
+    } else {
+      return {
+        text: "Дууссан",
+        bgColor: "bg-red-500",
+        textColor: "text-red-600",
+      };
+    }
   };
 
   const openModal = (product) => {
@@ -338,6 +388,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {data.map((product) => {
+              const stockStatus = getStockStatus(product.balance);
               return (
                 <div
                   key={product.id}
@@ -367,11 +418,11 @@ export default function Home() {
                     </Carousel>
 
                     {/* Stock Badge */}
-                    {product.balance > 0 && (
-                      <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
-                        Бэлэн байгаа
-                      </div>
-                    )}
+                    <div
+                      className={`absolute top-4 right-4 ${stockStatus.bgColor} text-white px-3 py-1 rounded-full text-xs font-semibold z-10`}
+                    >
+                      {stockStatus.text}
+                    </div>
                   </div>
 
                   <div className="p-6">
@@ -529,19 +580,16 @@ export default function Home() {
                           {selectedProduct.servings} удаагийн
                         </span>
                       </div>
-
                       <div className="flex items-center justify-between py-3 border-b border-slate-200">
                         <span className="text-slate-600 font-medium">
                           Үлдэгдэл:
                         </span>
                         <span
                           className={`font-semibold ${
-                            selectedProduct.balance > 0
-                              ? "text-green-600"
-                              : "text-red-600"
+                            getStockStatus(selectedProduct.balance).textColor
                           }`}
                         >
-                          {selectedProduct.balance > 0 ? "Байгаа" : "Дууссан"}
+                          {getStockStatus(selectedProduct.balance).text}
                         </span>
                       </div>
                     </div>
